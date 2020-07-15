@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: '../multiscreen.gradle'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "io.github.thang86.weather"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // defining the build date
+            buildConfigField "long", "BUILD_DATE", System.currentTimeMillis() + "L"
+            buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
+            buildConfigField("String", "API_KEY", "\"cefad8d1bd8e37ec1294ab8508e73333\"")
+            buildConfigField("String", "ALGOLIAL_API_KEY", "\"0cac681612f5a4af5579f6ddb92d7390\"")
+            buildConfigField("String", "ALGOLIAL_ID", "\"1QZQOBUS7A\"")
+            buildConfigField("String", "LOC_BASE_URL", "\"https://api.serpwow.com/\"")
+            buildConfigField("String", "LOC_API_KEY", "\"97458007F5CB49C89F1481E7C3733299\"")
+
+            buildConfigField("String", "BING_URL", "\"https://dev.virtualearth.net/\"")
+            buildConfigField("String", "BING_API_KEY", "\"AsLrA-B4VWniL1ePUfxSM0-F7sXYHi3YGi55eoirZsyIj0Z0BbBCroemVnZrAgFv\"")
+
+
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    implementation 'com.android.support:design:29.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    // Butter Knife`
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'com.android.support:palette-v7:29.0.0'
+
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.18'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+    implementation 'com.mikhaellopez:rxanimation:0.0.6'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
+
+    //Picaso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Algolia Search
+//    implementation 'com.algolia:algoliasearch-android:3.+'
+
+
+    // Moshi
+//    implementation 'com.squareup.retrofit2:converter-moshi:2.7.2'
+//    implementation 'com.squareup.moshi:moshi:1.9.2'
+//    implementation 'com.squareup.moshi:moshi-kotlin:1.9.2'
+//    implementation 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+
+//    implementation 'com.google.android.libraries.places:places:1.1.0'
+//
+//    implementation 'com.android.support:cardview-v7:29.0.0'
+//    implementation 'com.google.android.gms:play-services-places:16.0.0'
+//}
+}
